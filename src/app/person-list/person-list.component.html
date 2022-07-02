@@ -1,0 +1,17 @@
+<div *ngFor="let person of PersonList">
+    <div [class.edited]="person.edited" [class.deleted]="person.deleted">
+        {{ person.name }}
+        <span *ngFor="let i of [].constructor(person.rating)">*</span>
+        <!--  // cara pertama perulangan <span *ngFor="let i of rating(person.rating)">*</span> -->
+        <span *ngIf="person.edited">Edited</span>
+        <span *ngIf="person.deleted">Edited</span>
+        <div>
+            <button *ngIf="person.canEdit == true && !person.deleted" (click)="onEditClick(person)">
+        edit
+      </button>
+            <button *ngIf="person.canDelete" (click)="onDeleteClick(person)">
+        delete
+      </button>
+        </div>
+    </div>
+</div>
